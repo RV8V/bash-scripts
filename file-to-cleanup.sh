@@ -8,16 +8,16 @@ EXP_ARGS=1
 
 if test "$UID" -ne "$ROOT_UID"
 then
-  echo "For work you have to use root rights"
-  echo $E_NOTROOT
+  echo "For work you have to use root rights" >&2 errors 2> /dev/null
+  echo $E_NOTROOT >> errors  
   exit 1
 fi  
 
 if test "$#" -ne $EXP_ARGS
 then
-  echo "Usage: `basename $0` whatever"
+  echo "Usage: `basename $0` whatever" >> errors
   local WRONG_ARGS=$@
-  echo "Wrong args: $WRONG_ARGS used in script `basename $0`"
+  echo "Wrong args: $WRONG_ARGS used in script `basename $0`" >> errors
   exit 1
 fi 
 
@@ -31,5 +31,6 @@ tail -$lines messages > mesg.tmp
 mv mesg.tmp messages
 
 : > wtmp
-echo "Log files are cleaned"
+echo "Log files are cleaned" > res
+echo "see log file for errors and result: 'errors', 'res' respectively"
 exit 0
