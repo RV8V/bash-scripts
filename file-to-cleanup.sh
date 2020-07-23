@@ -31,6 +31,7 @@ tail -$lines messages > mesg.tmp
 mv mesg.tmp messages
 
 : > wtmp
+#!/bin/rm
 echo "Log files are cleaned" > res
 echo "see log file for errors and result: 'errors', 'res' respectively"
 exit 0
