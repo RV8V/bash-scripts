@@ -5,6 +5,7 @@ ROOT_UID=0
 LINES=50
 E_NOTROOT=67
 EXP_ARGS=1
+SUCCESS=0
 
 if test "$UID" -ne "$ROOT_UID"
 then
@@ -32,6 +33,6 @@ mv mesg.tmp messages
 
 : > wtmp
 #!/bin/rm
-echo "Log files are cleaned" > res
+echo "Log files are cleaned" 1> res
 echo "see log file for errors and result: 'errors', 'res' respectively"
-exit 0
+exit $SUCCESS
