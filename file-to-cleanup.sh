@@ -24,7 +24,7 @@ fi
 
 if test -n "$1"
 then lines=$1
-else lines=$LINES # values by defult if $1 is not defined
+else lines=$LINES : "values by defult if $1 is not defined"
 fi
 
 cd $LOG_DIR
