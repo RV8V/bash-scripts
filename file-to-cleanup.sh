@@ -1,11 +1,11 @@
 #!/bin/bash
 
-LOG_DIR=/var/log/
-ROOT_UID=0
-LINES=50
-E_NOTROOT=67
-EXP_ARGS=1
-SUCCESS=0
+readonly LOG_DIR=/var/log/
+declare -i ROOT_UID=0
+declare -i LINES=50
+declare -i E_NOTROOT=67
+declare -i EXP_ARGS=1
+declare -i SUCCESS=0
 
 if /usr/bin/[  "$UID" -ne "$ROOT_UID"
 then
