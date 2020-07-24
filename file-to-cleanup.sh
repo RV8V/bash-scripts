@@ -7,7 +7,7 @@ E_NOTROOT=67
 EXP_ARGS=1
 SUCCESS=0
 
-if test "$UID" -ne "$ROOT_UID"
+if /usr/bin/[  "$UID" -ne "$ROOT_UID"
 then
   echo "For work you have to use root rights" >&2 errors 2> /dev/null
   echo $E_NOTROOT >> errors  
@@ -22,7 +22,7 @@ then
   exit $?
 fi 
 
-if /usr/bin/test -n "$1"
+if /usr/bin/[ -n "$1"
 then lines=$1
 else lines=$LINES : "values by defult if $1 is not defined"
 fi
