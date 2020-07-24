@@ -14,7 +14,7 @@ then
   exit $?
 fi  
 
-if test "$#" -ne $EXP_ARGS
+if /usr/bin/[ "$#" -ne $EXP_ARGS
 then
   echo "Usage: `basename $0` whatever" >> errors
   local WRONG_ARGS=$@
@@ -22,7 +22,7 @@ then
   exit $?
 fi 
 
-if test -n "$1"
+if /usr/bin/test -n "$1"
 then lines=$1
 else lines=$LINES : "values by defult if $1 is not defined"
 fi
