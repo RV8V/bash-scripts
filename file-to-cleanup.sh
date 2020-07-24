@@ -11,7 +11,7 @@ if test "$UID" -ne "$ROOT_UID"
 then
   echo "For work you have to use root rights" >&2 errors 2> /dev/null
   echo $E_NOTROOT >> errors  
-  exit 1
+  exit $?
 fi  
 
 if test "$#" -ne $EXP_ARGS
@@ -19,7 +19,7 @@ then
   echo "Usage: `basename $0` whatever" >> errors
   local WRONG_ARGS=$@
   echo "Wrong args: $WRONG_ARGS used in script `basename $0`" >> errors
-  exit 1
+  exit $?
 fi 
 
 if test -n "$1"
