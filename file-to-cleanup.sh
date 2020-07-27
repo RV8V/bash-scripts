@@ -22,14 +22,9 @@ then
   exit $?
 fi 
 
-if /usr/bin/[ -n "$1"
-then lines=$1
-else lines=$LINES : "values by defult if $1 is not defined"
-fi
+[ /usr/bin/[ -n $1 ] && lines=${1:-$LINES}
 
-cd $LOG_DIR
-tail -$lines messages > mesg.tmp
-mv mesg.tmp messages
+cd $LOG_DIR && tail -$lines messages > mesg.tmp && mv mesg.tmp messages
 
 : > wtmp
 #!/bin/rm
