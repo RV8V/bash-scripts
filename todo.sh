@@ -5,7 +5,6 @@
 # priority tasks get double the time than normal tasks
 # the help parameter will alse be accepted
 
-# check to see if parameter is --help and display if true
 readonly priority=(research chapter)
 if test $1 = "--help"
 then
@@ -16,23 +15,19 @@ then
       echo " research and chapter"
       echo "- Priority keywords are given twice as much time as normal tasks"
 else
-      #create Tasks directory and files based on task names provided as parameters
-      #create Tasks directory if it does not exists
       declare -i ptasks_counter=0
       [ ! -d ~/Tasks ] && mkdir ~/Tasks
       for taskname in $@
       do
 	 : > ~/Tasks/$taskname.txt
-         #check for priority keywords and put in variable
-         [ $taskname = ${priority[0]} || $taskname = ${priority[1]} ] && {
+         [ $taskname = ${priority[0]} -o $taskname = ${priority[1]} ] && {
 	    ((ptasks_counter++))
             ptasks="$ptasks $taskname"
          }
       done
-      #workout time blocks
+
       readonly total_time_blocks=$(($#+$ptasks_counter))
       readonly time_blocks=$(((8*60)/$total_time_blocks))
-      #display task list with time blocks and allocate double blocks for priority tasks
       declare -i task_count=0
       clear
       echo -e "No. \t Time \t Taskname"
@@ -46,5 +41,3 @@ else
 	 shift
       done
 fi
-
-
