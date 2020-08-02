@@ -27,7 +27,7 @@ else
       done
 
       readonly total_time_blocks=$(($#+$ptasks_counter))
-      readonly time_blocks=$(((8*60)/$total_time_blocks))
+      readonly time_blocks=$((`echo '8*60' | bc`/$total_time_blocks))
       declare -i task_count=0
       clear
       echo -e "No. \t Time \t Taskname"
