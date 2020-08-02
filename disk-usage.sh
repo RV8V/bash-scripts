@@ -43,4 +43,6 @@ function check_usage {
   esac
 }
 
+set -x
 show_help $1 && check_dir_list && check_usage $1
+set +x
