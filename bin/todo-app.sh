@@ -1,5 +1,5 @@
 #!/bin/bash
-
+ 
 # a todo app that creates a list of tasks based on script parameters and
 # allocates time to each task based on 8 working hours
 # priority tasks get double the time than normal tasks
