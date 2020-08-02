@@ -1,5 +1,5 @@
 #!/bin/bash
-
+ 
 function fill_log() {
   [ -f "install.log" ] && tee -a install.log
   tee install.log  
