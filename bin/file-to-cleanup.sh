@@ -1,5 +1,5 @@
 #!/bin/bash
-
+ 
 readonly LOG_DIR=/var/log/
 declare -i ROOT_UID=0
 declare -i LINES=50
