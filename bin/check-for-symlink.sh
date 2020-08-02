@@ -1,7 +1,7 @@
 #!/bin/bash
 
 [ $# -eq 0 ] && directories=`pwd` || directories=$@
-
+ 
 linkchk() {
   for elem in $1/*; do
   [ -h "$elem" -a ! -e "$elem" ] && echo \"$elem\"
