@@ -1,5 +1,5 @@
 #!/bin/bash
-
+ 
 readonly RPT_DIR="/dist_usage"
 readonly RPT_NAME="report.txt"
 DIRS_TO_CHECH=
