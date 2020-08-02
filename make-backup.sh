@@ -29,4 +29,6 @@ function perform_backup {
   echo "backup complete at:" >> $LOG_LOC && date >> $LOG_LOC
 }
 
+set -x
 check_dir_loc && check_backup_loc && check_schedule && perform_backup
+set +x
