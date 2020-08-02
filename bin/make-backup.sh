@@ -1,5 +1,5 @@
 #!/bin/bash
-
+ 
 readonly LOG_LOC="/var/log/mybackup.log"
 
 function check_dir_loc {
