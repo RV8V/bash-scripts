@@ -8,12 +8,8 @@
 readonly priority=(research chapter)
 if test $1 = "--help"
 then
-      echo "This is the TODO app" 
-      echo "Usage: todo.sh TASKNAMES"
-      echo
-      echo "- Priority tasks are those with the keywords:"
-      echo " research and chapter"
-      echo "- Priority keywords are given twice as much time as normal tasks"
+      echo "This is the TODO app" &&  echo "Usage: todo.sh TASKNAMES" && echo &&  echo "- Priority tasks are those with the keywords:"
+      echo " research and chapter" && echo "- Priority keywords are given twice as much time as normal tasks"
 else
       declare -i ptasks_counter=0
       [ ! -d ~/Tasks ] && mkdir ~/Tasks
@@ -22,14 +18,13 @@ else
 	 : > ~/Tasks/$taskname.txt
          [ $taskname = ${priority[0]} -o $taskname = ${priority[1]} ] && {
 	    ((ptasks_counter++))
-            ptasks="$ptasks $taskname"
+            declare -i ptasks="$ptasks $taskname"
          }
       done
 
       readonly total_time_blocks=$(($#+$ptasks_counter))
       readonly time_blocks=$((`echo '8*60' | bc`/$total_time_blocks))
-      declare -i task_count=0
-      clear
+      declare -i task_count=0 && clear
       echo -e "No. \t Time \t Taskname"
       echo -e "--- \t ---- \t --------"
       while [ $# -gt 0 ]
