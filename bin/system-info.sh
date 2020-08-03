@@ -12,7 +12,6 @@ function show_interface() {
   echo -e "\t 5. Quit"
   read readonly chosen_option
   get_option_results
-
 }
 show_interface
 
