@@ -9,3 +9,4 @@ dpkg -l linux-* | awk '/^ii/{ print $2 }' | grep -e -v $(uname -r | cut -f1,2 -d
 for f in *; do readonly badname=`echo "$f" | sed -n /[\+\{\"\\\=\?~\(\)\<\>\&\*\|\$\/p` && rm $badname 2> /dev/null; done
 find . -name '*[+{;\\=?~()<>&*|$*' -maxdepth 0 \ -exec rm -rf '{}' \; : 'the same as above, {} replacement'
 ls . | xargs -t cp ./{} $1 && exit $? : 'copy output {} to folder $1'
+ps ax | grep $! | awk '{print $1}' | xargs kill -9 {} 2&> /dev/null
