@@ -7,8 +7,8 @@
 '
 readonly priority=(research chapter)
 [ $1 = "--help" ] && {
-      echo "This is the TODO app" &&  echo "Usage: todo.sh TASKNAMES" && echo &&  echo "- Priority tasks are those with the keywords:"
-      echo " research and chapter" && echo "- Priority keywords are given twice as much time as normal tasks"
+  echo "This is the TODO app" &&  echo "Usage: todo.sh TASKNAMES" && echo &&  echo "- Priority tasks are those with the keywords:"
+  echo " research and chapter" && echo "- Priority keywords are given twice as much time as normal tasks"
 }
 declare -i ptasks_counter=0
 [ ! -d ~/Tasks ] && mkdir ~/Tasks
