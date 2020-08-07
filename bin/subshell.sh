@@ -9,7 +9,7 @@ readonly outer=Outer
   echo "child process, \"inner\"=$inner"
   (cat $1 $2 $3 | sort | uniq > list$1$2$3) &
   (cat $4 $5 $6 | sort | uniq > list$4$5$6) & && wait
-  diff list$1$2$3 list$4$5$6 
+  diff list$1$2$3 list$4$5$6 && exit $? 
 )
 
 for home in `awk -F: '{print $6} /etc/passwd'`
