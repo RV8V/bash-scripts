@@ -26,7 +26,8 @@ readonly outer=Outer
   cat <(ls -l --recursive --classify /bin) && ls -lFR /bin | cat
   sort <(ls -m) <(ls -a /bin) <(ls -RF /usr/X11R6/bin) | less
   [ -f $1 -a -f $2 ] && diff <(cat $1) <(cat $2) | vim
-  echo >(:) && echo <(:) : '/dev/fd/63 descriptor'  
+  echo >(:) && echo <(:) : '/dev/fd/63 descriptor'
+  cat process-sub >(: && exit $?) : 'give controll to child process with fd = 63'  
 )
 
 for home in `awk -F: '{print $6} /etc/passwd'`
