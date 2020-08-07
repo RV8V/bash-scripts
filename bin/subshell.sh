@@ -16,6 +16,11 @@ readonly outer=Outer
   echo "no need to change variable \"IFS\" to previous state ->" && exit $? 
 )
 
+(
+  while read des what mask iface; do echo $des->$what->$mask->$iface; done < <(route -n)
+  route -n | while read des what mask iface; do $des $what $mask $iface; done
+)
+
 for home in `awk -F: '{print $6} /etc/passwd'`
 do
    [ -d "$home" ] || continue
