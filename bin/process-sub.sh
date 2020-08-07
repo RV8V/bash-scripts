@@ -22,6 +22,11 @@ readonly outer=Outer
   : 'in this case (while) loop will be executed in child process and variables will not be seen after closure of chanel | '
 )
 
+(
+  cat <(ls -l --recursive --classify /bin) && ls -lFR /bin | cat
+  sort <(ls -m) <(ls -a /bin) <(ls -RF /usr/X11R6/bin) | less   
+)
+
 for home in `awk -F: '{print $6} /etc/passwd'`
 do
    [ -d "$home" ] || continue
