@@ -3,6 +3,7 @@
 
 readonly file=.bashrc
 readonly outer=Outer
+readonly directory_name=/usr/bin
 
 (
   readonly inner=Inner
@@ -27,7 +28,8 @@ readonly outer=Outer
   sort <(ls -m) <(ls -a /bin) <(ls -RF /usr/X11R6/bin) | less
   [ -f $1 -a -f $2 ] && diff <(cat $1) <(cat $2) | vim
   echo >(:) && echo <(:) : '/dev/fd/63 descriptor'
-  cat process-sub >(: && exit $?) : 'give controll to child process with fd = 63'  
+  cat process-sub >(: && exit $?) : 'give controll to child process with fd = 63'
+  tar cf >(bzip2 -c > file.tar.gz) $directory_name : 'tar cf /dev/fd/?? $directory_name && bzip2 -c > file.tar.gz'  
 )
 
 for home in `awk -F: '{print $6} /etc/passwd'`
