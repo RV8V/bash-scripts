@@ -16,9 +16,10 @@ readonly outer=Outer
   echo "no need to change variable \"IFS\" to previous state ->" && exit $? 
 )
 
-(
+( : 'process substitution'
   while read des what mask iface; do echo $des->$what->$mask->$iface; done < <(route -n)
   route -n | while read des what mask iface; do $des $what $mask $iface; done
+  : 'in this case (while) loop will be executed in child process and variables will not be seen after closure of chanel | '
 )
 
 for home in `awk -F: '{print $6} /etc/passwd'`
